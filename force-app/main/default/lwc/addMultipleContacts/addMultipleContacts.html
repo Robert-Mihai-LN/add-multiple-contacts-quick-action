@@ -1,0 +1,96 @@
+<template>
+    <div class="slds-modal__header slds-text-heading_large slds-p-around_medium">
+        Add multiple contacts
+    </div>
+    <div class="slds-modal__content slds-p-around_medium">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col">
+                        <div class="slds-truncate" title="First Name">First Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Last Name">Last Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Email">Email</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Gender">Gender</div>
+                    </th>
+                    <th scope="col">
+                        <lightning-button-icon 
+                            icon-name="utility:add"
+                            title="Add New Contact"
+                            class="slds-m-left_xx-small"
+                            onclick={addNewClickHandler}>
+                        </lightning-button-icon>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <lightning-input label="First Name" variant="label-hidden" placeholder="Enter first name" class="slds-input"></lightning-input>
+                    </td>
+                    <td>
+                        <lightning-input label="Last Name" variant="label-hidden" placeholder="Enter last name" class="slds-input"></lightning-input>
+                    </td>
+                    <td>
+                        <lightning-input label="Email" variant="label-hidden" placeholder="Enter your email" class="slds-input"></lightning-input>
+                    </td>
+                    <td>
+                        <lightning-combobox
+                            label="Genders"
+                            variant="label-hidden"
+                            placeholder="Select gender"
+                            options={genderOptions}>
+                        </lightning-combobox>
+                    </td>
+                    <td>
+                        <lightning-button-icon 
+                            icon-name="utility:delete"
+                            title="Delete Contact"
+                            class="slds-m-left_xx-small"
+                            onclick={deleteClickHandler}>
+                        </lightning-button-icon>
+                    </td>
+                </tr>
+                <template for:each={contacts} for:item="contact">
+                    <tr key={contact.tempId}>
+                        <td>
+                            <lightning-input label="First Name" variant="label-hidden" placeholder="Enter first name" class="slds-input"></lightning-input>
+                        </td>
+                        <td>
+                            <lightning-input label="Last Name" variant="label-hidden" placeholder="Enter last name" class="slds-input"></lightning-input>
+                        </td>
+                        <td>
+                            <lightning-input label="Email" variant="label-hidden" placeholder="Enter your email" class="slds-input"></lightning-input>
+                        </td>
+                        <td>
+                            <lightning-combobox
+                                label="Genders"
+                                variant="label-hidden"
+                                placeholder="Select gender"
+                                options={genderOptions}>
+                            </lightning-combobox>
+                        </td>
+                        <td>
+                            <lightning-button-icon 
+                                icon-name="utility:delete"
+                                title="Delete Contact"
+                                class="slds-m-left_xx-small"
+                                onclick={deleteClickHandler}
+                                data-temp-id={contact.tempId}>
+                            </lightning-button-icon>
+                        </td>
+                    </tr>
+                </template>    
+            </tbody>  
+    
+        </table>
+    </div>
+    <div class="slds-modal__footer slds-text-align_right">
+        <lightning-button label="Submit" variant="brand"></lightning-button>
+    </div>
+</template>
